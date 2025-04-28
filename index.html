@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Random Acc Liên Quân 2025</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://cdn.pixabay.com/photo/2016/11/18/16/21/abstract-1835110_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    header {
+      background-color: rgba(255, 215, 0, 0.9);
+      color: #000;
+      padding: 15px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      margin: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #FFD700;
+    }
+    .acc-box {
+      padding: 20px;
+      border-radius: 10px;
+      background: #111;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      background-color: #FFD700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      color: #000;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #e6c200;
+    }
+    .history {
+      background: #222;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+      text-align: left;
+    }
+    .info {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #ccc;
+    }
+    a {
+      color: #FFD700;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .copy {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #bbb;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  Random Acc Liên Quân 2025
+</header>
+
+<div class="container">
+  <div class="acc-box">
+    <h2>Tài khoản random:</h2>
+    <p id="account">Nhấn nút bên dưới để nhận tài khoản!</p>
+    <div class="copy" onclick="copyAcc()">Sao chép tài khoản</div>
+    <button onclick="randomAcc()">NHẬN TÀI KHOẢN NGAY</button>
+  </div>
+
+  <div class="history">
+    <h3>Lịch sử nhận tài khoản:</h3>
+    <ul id="historyList" style="list-style: none; padding-left: 10px;"></ul>
+  </div>
+
+  <div class="info">
+    Chủ Shop: <b>Hải IOS</b><br>
+    Hỗ trợ Telegram: <a href="https://t.me/haireal_ios" target="_blank">@haireal_ios</a>
+  </div>
+</div>
+
+<script>
+// Danh sách acc
+const accList = [
+  "duySoSo|thaiduymanh123",
+  "huanhoangvan01|huanmatlol2003",
+  "minhmit110|Quyen123",
+  "Caythuez9|ngotrongtan2006",
+  "Yelasau|iuzkTrinh98",
+  "vsdgame1089|tuan1089",
+  "zamtac2002|loi17102002",
+  "bulztragop124|0989843172van",
+  "Baohoa1943|Tomgau123",
+  "Kuduy2010|01633237992a",
+  "Zuka_dead_boy|14112k10@Hqa",
+  "ngochuyen212002|minhhieu123",
+  "taithirotki2|man250494",
+  "nopro208|Luongvantu2008?",
+  "tungtd1996|Tungtd1996",
+  "Chinhyeuai111|Chodien1102",
+  "kp394806|Nvhpwg_03",
+  "phi0975138300|Thuc1609",
+  "iceboiz2|floren2k",
+  "leeanh994|leeanh1102",
+  "maiyeuly135|21102004ly",
+  "mynuanchoi8|xadoa56789",
+  "vtcff2|asdasdasd123",
+  "quachtrunghieuk|25102000vu",
+  "Bindkf|M0987654321",
+  "minhtu252|minhtu2003",
+  "Cheesaeel|19983011ae",
+  "clitusireneiu|thanhquang1",
+  "lethanhtuan7|03122003tam",
+  "Cauchunan|cauchunan2k4",
+  "pilot_ng|562560mk",
+  "jjvvdf|Tam21^-^",
+  "lunhathao13|kupo2742001",
+  "l30082009l|Hungcktv123",
+  "huynguyen.ha29@gmail.com|123456789a",
+  "phon35781|Meyeucon246@",
+  "congtruongle0|truong12",
+  "datzombie321|datzombie1234",
+  "trandinhduy987|tranduy987",
+  "tuannhan800|tuan0906580265",
+  "loikiemhoa|loikocohoa3",
+  "hvd88837|phantuankiet123",
+  "qtrang08.8|Qtrang08_@",
+  "Tha_cho_em81|Djtmegaren@0901",
+  "azeru0120|azeru01208939000",
+  "hoangthienmao12|danxom1vjp",
+  "vietez|empty6789",
+  "lephuochcm|@Phuoc01",
+  "caubuoido1994|qazqaz12345",
+  "nhibinhbinh|qazwsxedc1",
+  "LMv1234fi|sondzkt9",
+  "dat0973231067|dat01683902260",
+  "nhokkenxuxu1|nhokken1",
+  "0937646076gg|nth11092006"
+];
+
+function randomAcc() {
+  const randomIndex = Math.floor(Math.random() * accList.length);
+  const randomAccount = accList[randomIndex];
+  document.getElementById('account').innerText = randomAccount;
+
+  const historyList = document.getElementById('historyList');
+  const newItem = document.createElement('li');
+  newItem.textContent = randomAccount;
+  historyList.prepend(newItem);
+}
+
+function copyAcc() {
+  const accText = document.getElementById('account').innerText;
+  navigator.clipboard.writeText(accText).then(() => {
+    alert('Đã sao chép tài khoản!');
+  });
+}
+</script>
+
+</body>
+</html>
